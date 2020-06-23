@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<TITLE> Verify Password Strength </TITLE>
+<script>
+function Verify()
+{
+var msg=document.getElementById("msg");
+var status=document.getElementById("status");
+var pwd=document.getElementById("txtPwd").value;
+var regExp=/(?=.*[A-Z])\w{4,15}/;
+
+if(pwd.match(regExp))
+{
+msg.innerHTML="Strong Password";
+status.min="1";
+status.max="100";
+status.value="100";
+status.low="0";
+status.high="0";
+}
+else if(pwd.length<4)
+{
+msg.innerHTML="Poor Password";
+status.min="1";
+status.max="100";
+status.value="100";
+status.low="60";
+status.high="80";
+}
+else
+{
+msg.innerHTML="Weak Password";
+status.min="1";
+status.max="100";
+status.value="100";
+status.low="30";
+status.high="80";
+}
+}
+</script>
+</HEAD>
+
+<BODY>
+<form>
+<fieldset>
+<legend> <strong>Password Strength </strong></legend>
+Password: <br>
+<input type="text" id="txtPwd" onkeyup="Verify()">
+<meter min="1" max="100" value="0" low="0" high="0" id="status"> </meter>
+<span id="msg"> </span>
+</fieldset>
+</form
+</BODY>
+</HTML>
